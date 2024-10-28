@@ -6,7 +6,7 @@ output "acm-cerf"{
 }
 
 resource "aws_acm_certificate" "req_cerf" {
-  domain_name       = var.domain_name
+  domain_name       = var.domain_name #Requsting certificate with for the name jenkins.ravin.store
   validation_method = "DNS"
 
   tags = {
@@ -17,7 +17,7 @@ resource "aws_acm_certificate" "req_cerf" {
   }
 }
 
-resource "aws_route53_record" "validation" {
+resource "aws_route53_record" "validation" { #Various domain validation options
   for_each = {
     for dvo in aws_acm_certificate.req_cerf.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -26,7 +26,7 @@ resource "aws_route53_record" "validation" {
     }
   }
 
-  zone_id = var.hosted_zone_id # replace with your Hosted Zone ID
+  zone_id = var.hosted_zone_id # replace with your Hosted Zone ID of the domain ravin.store
   name    = each.value.name
   type    = each.value.type
   records = [each.value.record]

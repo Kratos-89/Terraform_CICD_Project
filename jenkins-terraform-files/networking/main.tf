@@ -59,14 +59,14 @@ resource "aws_internet_gateway" "igw"{
 resource "aws_route_table" "route_table_public"{
   vpc_id = aws_vpc.vpc.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "0.0.0.0/0" #Routes all other traffic beyond the vpc range to the internet gateway
     gateway_id = aws_internet_gateway.igw.id
   }
   tags = {
     Name = var.jenkins-vpc-rt-public
   }
 }
-
+#Associate route table to both the public subnets
 resource "aws_route_table_association" "public_assocation" {
   count = length(aws_subnet.public_subnet)
   subnet_id      = element(aws_subnet.public_subnet.*.id,count.index)

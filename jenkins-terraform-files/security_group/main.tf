@@ -47,7 +47,7 @@ resource "aws_security_group" "ec2-sg"{
     description = "Allow outgoing request"
     from_port = 0
     to_port = 0
-    protocol = -1
+    protocol = -1 # -1 specifies all protocols like http, https..etc.
     cidr_blocks = ["0.0.0.0/0"]
   }
 }

@@ -6,7 +6,7 @@ output "acm-cerf-arn"{
 }
 
 resource "aws_acm_certificate" "acm-cerf" {
-  domain_name       = var.domain_name
+  domain_name       = var.domain_name #app.ravin.store
   validation_method = "DNS"
 
   tags = {

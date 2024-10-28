@@ -17,7 +17,6 @@ userdata = "./jenkins-runner/script.sh"
 alb-tg-name = "alb-tg-jenkins"
 alb-tg-port=8080
 protocol = "HTTP"
-certificate_arn = "arn:aws:acm:us-east-1:339713067384:certificate/a940bec4-28a4-4470-9f90-f2cf46f4232e"
 alb-name = "Jenkins-load-balancer"
 is_external = false
 loadbalancer_type = "application"
