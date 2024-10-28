@@ -9,8 +9,8 @@ data "aws_route53_zone" "data"{
 }
 
 resource "aws_route53_record" "lb_record"{
-  zone_id = data.aws_route53_zone.data.zone_id
-  name    = var.domain_name
+  zone_id = data.aws_route53_zone.data.zone_id #Our domain hosted zone
+  name    = var.domain_name #jenkins.ravin.store 
   type    = "A"
   alias{
     name = var.dns_name

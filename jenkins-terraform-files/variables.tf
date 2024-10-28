@@ -124,10 +124,6 @@ variable "http_protocol"{
   type = string
 }
 
-variable "http_portocol"{
-  description = "http portocol"
-  type = string
-}
 
 variable "https_protocol"{
   description = "https portocol"
